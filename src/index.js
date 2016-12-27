@@ -3,7 +3,7 @@ const lodash = require('lodash');
 const Promise = require('bluebird');
 
 const envName = process.env.NODE_ENV || 'production';
-const config = ['subscribeChannel', 'pushQueue', 'trimLength'].reduce((config, key) => {
+const config = ['subscribeChannel'].reduce((config, key) => {
     assert(process.env[key], key);
     config[key] = process.env[key];
     return config;
@@ -47,10 +47,7 @@ async function startProduction() {
         if (process.env.NODE_ENV !== 'production') {
             console.log({channel, message});
         }
-        multiExecAsync(client, multi => {
-            multi.lpush(config.pushQueue, message);
-            multi.ltrim(config.pushQueue, 0, config.trimLength);
-        });
+        // render message to console in color here
     });
     sub.subscribe(config.subscribeChannel);
 }
