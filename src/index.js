@@ -57,7 +57,7 @@ async function end() {
 
 start().then(() => {
 }).catch(err => {
-    console.log(err);
+    console.error(err);
     end();
 }).finally(() => {
 });
