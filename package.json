@@ -1,5 +1,5 @@
 {
-  "name": "sublog-console",
+  "name": "sublog",
   "version": "0.0.1",
   "description": "Subscribe to Redis channel and push messages to a Redis list",
   "main": "index.js",
